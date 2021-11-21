@@ -1,3 +1,6 @@
+#Need to do preprocessing
+#Generalize generation of graphs
+
 from difflib import SequenceMatcher
 import numpy as np
 import matplotlib.pyplot as plt
@@ -28,10 +31,9 @@ b = "Apples I like."         #50% Plagiarism
 c = "I love apples."         #85% Plagiarism
 d = "Apples are liked by me" #38% Plagiarism
 
-seq = SequenceMatcher(None, a, b)
-seq = SequenceMatcher(None, a, c)
-seq = SequenceMatcher(None, a, d)
-print((seq.ratio()))
+#seq = SequenceMatcher(None, a, b)
+##seq = SequenceMatcher(None, a, d)
+#print((seq.ratio()))
 
 student_list = [a, b, c, d] 
 comparision_list = []
@@ -49,7 +51,8 @@ for one in student_list:
         comparision_person.append(ratio)
     comparision_list.append(comparision_person)
 
-print(comparision_list)
+for lst in comparision_list:
+    print(lst)
 
 
 students = ['19X201', '19X202', '19X203', '19X204']
@@ -70,16 +73,14 @@ s19X202.append(s19X202[0])
 s19X203.append(s19X203[0])
 s19X204.append(s19X204[0])
 
-fig=plt.figure(figsize=(6,6))
-ax=fig.add_subplot(polar=True)
-ax.plot(angles,s19X201)
-plt.show()
 
 fig=plt.figure(figsize=(6,6))
 ax=fig.add_subplot(polar=True)#basic plot
 ax.plot(angles,s19X201, 'o-', color='g', label='19X201')
+
 #fill plot
 ax.fill(angles, s19X201, alpha=0.25, color='g')
+
 #Add labels
 ax.set_thetagrids(angles * 180/np.pi, students)
 ax.set_theta_offset(np.pi / 2)
@@ -91,12 +92,15 @@ plt.show()
 
 fig=plt.figure(figsize=(6,6))
 ax=fig.add_subplot(111, polar=True)
-#Alice Plot
+
+#19X201
 ax.plot(angles,s19X201, 'o-', color='g', linewidth=1, label='19X201')
 ax.fill(angles, s19X201, alpha=0.25, color='g')
-#Bob Plot
+
+#19X202
 ax.plot(angles,s19X202, 'o-', color='orange', linewidth=1, label='19X202')
 ax.fill(angles, s19X202, alpha=0.25, color='orange')
+
 ax.set_thetagrids(angles * 180/np.pi, students)
 ax.set_theta_offset(np.pi / 2)
 ax.set_theta_direction(-1)
@@ -104,3 +108,17 @@ plt.grid(True)
 plt.tight_layout()
 plt.legend()
 plt.show()
+
+'''
+
+A, B
+C, D, E
+F, G, H, I, J
+
+'''
+
+'''
+1. To check code
+2. To check only text files
+3. To check text files with images
+'''
