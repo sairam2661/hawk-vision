@@ -1,10 +1,13 @@
 #Need to do preprocessing
 #Generalize generation of graphs
+#Try a real dataset for geneating the graphs
+#Find different graphs for visualizing the information
 
 from difflib import SequenceMatcher
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import math
+import csv
 
 def truncate(number, decimals=0):
     """
@@ -20,7 +23,7 @@ def truncate(number, decimals=0):
     factor = 10.0 ** decimals
     return math.trunc(number * factor) / factor
 
-plt.style.use('ggplot')
+#plt.style.use('ggplot')
 
 def preprocessing(text):
     text = text.lower()
@@ -31,17 +34,27 @@ b = "Apples I like."         #50% Plagiarism
 c = "I love apples."         #85% Plagiarism
 d = "Apples are liked by me" #38% Plagiarism
 
-#seq = SequenceMatcher(None, a, b)
-##seq = SequenceMatcher(None, a, d)
-#print((seq.ratio()))
+sentence1 = "My name is Guna. I am an Indian who studies in PSG College of Technology. I am a 3rd year in the IT department. I love web development and aim to be a full stack web developer over these holidays. I hope Rajith replies to my message one day. I am a Virat Kohli fan and I hate Rohit Sharma. I hope India keeps Kohli as the captain and not that stupid hitman. My favourite subject in my current semester are DAA and IoT."
+sentence2 = "Guna is my name. I am a student at PSG College of Technology and am from India. In the IT department, I am in my third year. I enjoy web development and plan to work as a full stack web developer during the holidays. I'm hoping Rajith will respond to my message at some point. I support Virat Kohli and despise Rohit Sharma. I hope India keeps Kohli as captain instead of that dunderhead. DAA and IoT are my current semester's favourite subjects."
+
+seq = SequenceMatcher(None, sentence1, sentence2)
+#seq = SequenceMatcher(None, a, d)
+print((seq.ratio()))
+
+seq = SequenceMatcher(None, sentence1, sentence1)
+#seq = SequenceMatcher(None, a, d)
+print((seq.ratio()))
 
 student_list = [a, b, c, d] 
 comparision_list = []
+students = ['19X201', '19X202', '19X203', '19X204']
+comparision_list.append(['Students'] + students)
 
 n = 4
 
 for one in student_list:
     comparision_person = []
+    comparision_person.append(students[student_list.index(one)])
     for others in student_list:
         ratio = 0
         seq = (SequenceMatcher(None, one, others))
@@ -54,71 +67,6 @@ for one in student_list:
 for lst in comparision_list:
     print(lst)
 
-
-students = ['19X201', '19X202', '19X203', '19X204']
-angles=np.linspace(0,2*np.pi,len(students), endpoint=False)
-#print(angles)
-
-angles=np.concatenate((angles,[angles[0]]))
-#print(angles)
-
-s19X201 = comparision_list[0]
-s19X202 = comparision_list[1]
-s19X203 = comparision_list[2]
-s19X204 = comparision_list[3]
-
-students.append(students[0])
-s19X201.append(s19X201[0])
-s19X202.append(s19X202[0])
-s19X203.append(s19X203[0])
-s19X204.append(s19X204[0])
-
-
-fig=plt.figure(figsize=(6,6))
-ax=fig.add_subplot(polar=True)#basic plot
-ax.plot(angles,s19X201, 'o-', color='g', label='19X201')
-
-#fill plot
-ax.fill(angles, s19X201, alpha=0.25, color='g')
-
-#Add labels
-ax.set_thetagrids(angles * 180/np.pi, students)
-ax.set_theta_offset(np.pi / 2)
-ax.set_theta_direction(-1)
-plt.grid(True)
-plt.tight_layout()
-plt.legend()
-plt.show()
-
-fig=plt.figure(figsize=(6,6))
-ax=fig.add_subplot(111, polar=True)
-
-#19X201
-ax.plot(angles,s19X201, 'o-', color='g', linewidth=1, label='19X201')
-ax.fill(angles, s19X201, alpha=0.25, color='g')
-
-#19X202
-ax.plot(angles,s19X202, 'o-', color='orange', linewidth=1, label='19X202')
-ax.fill(angles, s19X202, alpha=0.25, color='orange')
-
-ax.set_thetagrids(angles * 180/np.pi, students)
-ax.set_theta_offset(np.pi / 2)
-ax.set_theta_direction(-1)
-plt.grid(True)
-plt.tight_layout()
-plt.legend()
-plt.show()
-
-'''
-
-A, B
-C, D, E
-F, G, H, I, J
-
-'''
-
-'''
-1. To check code
-2. To check only text files
-3. To check text files with images
-'''
+with open("similarity.csv", "w", newline="") as f:
+    writer = csv.writer(f)
+    writer.writerows(comparision_list)
