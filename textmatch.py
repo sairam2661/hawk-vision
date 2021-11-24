@@ -54,7 +54,8 @@ n = 4
 
 for one in student_list:
     comparision_person = []
-    comparision_person.append(students[student_list.index(one)])
+    current = student_list.index(one)
+    comparision_person.append(students[current])
     for others in student_list:
         ratio = 0
         seq = (SequenceMatcher(None, one, others))
@@ -62,6 +63,7 @@ for one in student_list:
         ratio = float(ratio) * 100
         ratio = truncate(ratio, 3)
         comparision_person.append(ratio)
+    comparision_person[current + 1] = truncate(0, 3)
     comparision_list.append(comparision_person)
 
 for lst in comparision_list:
