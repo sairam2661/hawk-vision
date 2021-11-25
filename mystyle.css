@@ -17,10 +17,11 @@
     text-align: center;
     margin: 0px auto;
     padding: 70px 30px 70px 30px;
-    background-color: #034d66;
+    background: #9575CD ;
+    ;
   }
 
-  .contributions
-  {
-    
-  }
+ .navigation
+ {
+   background-color: darkblue;
+ }
