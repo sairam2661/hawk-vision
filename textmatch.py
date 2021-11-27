@@ -47,7 +47,7 @@ print((seq.ratio()))
 
 student_list = [a, b, c, d] 
 comparision_list = []
-students = ['19X201', '19X202', '19X203', '19X204']
+students = ['19X201', '19X202', '19X203', '19X205']
 comparision_list.append(['Students'] + students)
 
 n = 4
