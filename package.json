@@ -1,0 +1,25 @@
+{
+  "name": "hawk-vision",
+  "version": "1.0.0",
+  "description": "plagarism checker",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sairam2661/hawk-vision.git"
+  },
+  "author": "hawk vision",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sairam2661/hawk-vision/issues"
+  },
+  "homepage": "https://github.com/sairam2661/hawk-vision#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4"
+  },
+  "devDependencies": {
+    "font-awesome": "^4.7.0"
+  }
+}
