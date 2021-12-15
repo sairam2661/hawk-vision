@@ -2,6 +2,7 @@ import nltk
 from nltk.tokenize import word_tokenize
 from nltk.tokenize import sent_tokenize
 from nltk.corpus import stopwords
+
 def lcs(l1,l2):
     s1=word_tokenize(l1)
     s2=word_tokenize(l2)
@@ -70,4 +71,7 @@ for i in sent_p:
 
 score=sum_lcs/len(tokens_p)
 print(score)
+
 #jaccard score, containment score, longest common subsequence score
+sum = (J*2 + C*2 + score)/3
+print(sum)

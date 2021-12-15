@@ -45,6 +45,7 @@ seq = SequenceMatcher(None, sentence1, sentence1)
 #seq = SequenceMatcher(None, a, d)
 print((seq.ratio()))
 
+'''
 student_list = [a, b, c, d] 
 comparision_list = []
 students = ['19X201', '19X202', '19X203', '19X205']
@@ -72,3 +73,4 @@ for lst in comparision_list:
 with open("similarity.csv", "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerows(comparision_list)
+'''
