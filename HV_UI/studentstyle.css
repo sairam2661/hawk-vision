@@ -1,6 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:wght@500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:wght@500;700&display=swap');
 
 *{
   margin: 0;
@@ -8,6 +8,7 @@
   box-sizing: border-box;
   font-family: "Poppins" , sans-serif;
 }
+
 .sidebar{
   position: fixed;
   left: 0;
@@ -224,9 +225,9 @@
   width: 50px;
   background: none;
 }
+
 .home-section{
   position: relative;
-  display: flex; 
   background: #E4E9F7;
   min-height: 100vh;
   align-items: center;
@@ -235,128 +236,143 @@
   left: 78px;
   width: calc(100% - 78px);
   transition: all 0.5s ease;
-  z-index: 2; 
-  padding: 2em;  
+  z-index: 2;
+  padding: 2em;
 }
 .sidebar.open ~ .home-section{
   left: 250px;
   width: calc(100% - 250px);
 } 
 
-.home-section .text{
-  display: inline-block;
-  color: #11101d;
-  font-size: 25px;
-  font-weight: 500;
-  margin: 18px
-}
-@media (max-width: 420px) {
-  .sidebar li .tooltip{
-    display: none;
-  }
-}
-
-/* Starting dashboard cards styling */
-.sidebar.open ~ .page-section{
-  left: 750px;
-  width: calc(100% - 250px);
+:root {
+  font-size: 62.5%;
+  --title-font: 'Open Sans';
+  --data-font: 'Lato';
+  --white-bone: rgb(230, 230, 230);
+  --blue: #1d1b31;
+  --light-black: rgb(0 0 0 / .8);
+  --transparent-black: rgb(0 0 0 / .2);
+  --white: #fff;
+  --light-gray: rgb(200, 200, 200, .7);
 }
 
-.data-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  max-width: 20.75em;
-  min-height: 20.75em;
-  overflow: hidden;
-  border-radius: 0.5em;
-  text-decoration: none;
-  background: white;
-  margin: 1em;
-  padding: 2.75em 2.5em;
-  box-shadow: 0 1.5em 2.5em -0.5em rgba(0, 0, 0, .1);
-  transition: transform 0.45s ease, background 0.45s ease;
+.page-title {
+  margin: 15px 0;
+  padding: 0 .5em;
+  font-family: var(--title-font);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 4vw, 3.2rem);
+  text-align: center; 
+  color: var(--light-black);
 }
 
-.sidebar.open ~ .data-card{
+.sidebar.open ~ .page-title{
   left: 250px;
   width: calc(100% - 250px);
 } 
 
-.data-card h3 {
-  color: #2e3c40;
-  font-size: 3.5em;
-  font-weight: 600;
-  line-height: 1;
-  padding-bottom: 0.5em;
-  margin: 0 0 0.142857143em;
-  border-bottom: 2px solid #1d1b31;
-  transition: color 0.45s ease, border 0.45s ease;
+/*---------------------Conversion Rate List----------------------*/
+.conversion-rate-list {
+  width: 80%;
+  margin: 25px auto;
+  
+  text-align: center;
+  
+  list-style: none;
 }
-.data-card h4 {
-  color: #627084;
-  text-transform: uppercase;
-  font-size: 1.125em;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0.1em;
-  margin: 0 0 1.777777778em;
-  transition: color 0.45s ease;
+
+.list-item {
+  padding-bottom: 2.5em;
+  
+  border-radius: 6px;
+  box-shadow: 1px 1px 16px var(--transparent-black);
+  overflow: hidden;
 }
-.data-card p {
-  opacity: 0;
-  color: #fff;
-  font-weight: 600;
-  line-height: 1.8;
-  margin: 0 0 1.25em;
-  transform: translateY(-1em);
-  transition: opacity 0.45s ease, transform 0.5s ease;
+
+.list-item + .list-item {
+  margin-top: 10px;
 }
-.data-card .link-text {
-  display: block;
-  color: #1d1b31;
-  font-size: 1.125em;
-  font-weight: 600;
-  line-height: 1.2;
-  margin: auto 0 0;
-  transition: color 0.45s ease;
+
+.platform {
+  background: var(--blue);
+  color: var(--white);
 }
-.data-card .link-text svg {
-  margin-left: 0.5em;
-  transition: transform 0.6s ease;
+
+.name,
+.platform {
+  font-family: var(--title-font), sans-serif;
+  font-size: 2.4rem;
+  font-weight: 500;
+  line-height: 2;
 }
-.data-card .link-text svg path {
-  transition: fill 0.45s ease;
+
+.value {
+  line-height: 1.5;
+  font-family: var(--data-font), sans-serif;
+  font-size: 2rem;
+  
+  color: var(--light-black);
 }
-.data-card:hover {
-  background: #1d1b31;
-  transform: scale(1.02);
+/*-----------------------------Conversion Rate Table---------------------------*/
+.conversion-rate-table {
+  flex-basis: min(80%, 900px);
+  
+  display: none;
+  
+  padding-bottom: 1em;
+  
+  background-color: var(--white-bone);
+  border-radius: 6px;
+  border-collapse: collapse;
+  box-shadow: 1px 1px 16px var(--transparent-black);
+  overflow: hidden;
 }
-.data-card:hover h3 {
-  color: #fff;
-  border-bottom-color: #2b2a38;
+
+.table__headers {
+  background-color: var(--blue);
 }
-.data-card:hover h4 {
-  color: #fff;
+
+.header {
+  padding: .25em 0;
+  
+  font-family: var(--title-font), sans-serif;
+  font-size: 2.4rem;
+  font-weight: 500;
+  
+  color: var(--white);
 }
-.data-card:hover p {
-  opacity: 1;
-  transform: none;
+
+.table__row:nth-child(odd) {
+  background-color: var(--white);
 }
-.data-card:hover .link-text {
-  color: #fff;
+
+.row__cell{
+  padding: .25em 0;
+  
+  font-family: var(--data-font), sans-serif;
+  font-size: 2rem;
+  text-align: center;
 }
-.data-card:hover .link-text svg {
-  animation: point 1.25s infinite alternate;
+
+.row__cell + .row__cell,
+.header + .header {
+  border-left: 1px solid var(--light-gray);
 }
-.data-card:hover .link-text svg path {
-  fill: #fff;
-}
-@keyframes point {
-  0% {
-    transform: translateX(0);
- }
-  100% {
-    transform: translateX(0.125em);
- }
+
+@media (min-width: 600px) {
+  .conversion-rate-list {
+    display: none;
+  }
+  
+  .conversion-rate-table {
+    display: table;
+  }
+  
+  .wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 80vh;
+  }
 }
