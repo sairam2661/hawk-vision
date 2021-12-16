@@ -278,12 +278,12 @@ footer{
   background: #f12020;
   top: -10px;
 }
-/* 
+
 .left{
   position: relative;
   left: 75px;
   transition: all 0.5s ease;
-} */
+} 
 
 .left .content p{
   text-align: justify;
